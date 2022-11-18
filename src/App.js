@@ -12,10 +12,10 @@ function App() {
         e.preventDefault();
         try {
             const response = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=e6630a9c0a1bcd4777dc0a539b027e87`
+                `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API}`
             );
             const data = await response.json();
-            if (data.cod !== "404") {
+            if (city && data.cod !== "404") {
                 setInfo({
                     sky: data.weather[0].main,
                     temp: data.main.temp,
