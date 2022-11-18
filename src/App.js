@@ -27,7 +27,7 @@ function App() {
                 }, 8000);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
     };
     return (
