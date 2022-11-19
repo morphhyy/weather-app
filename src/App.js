@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -7,6 +7,11 @@ function App() {
     const imageurl =
         city &&
         `https://images.unsplash.com/photo-1553901753-215db344677a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80`;
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
 
     const getData = async (e) => {
         e.preventDefault();
@@ -37,6 +42,7 @@ function App() {
         >
             <form method="POST" onSubmit={getData}>
                 <input
+                    ref={inputRef}
                     className="inputCity"
                     type="text"
                     name="city"
